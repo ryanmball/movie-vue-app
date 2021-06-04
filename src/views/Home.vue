@@ -15,7 +15,6 @@
       <p>{{ movie.plot }}</p>
       <p>{{ movie.year }}</p>
       <button v-on:click="movieShow(movie)">More Info</button>
-      <!-- <p>Genres: {{ movie.genre_names }}</p> -->
     </div>
     <dialog id="movie-details">
       <form method="dialog">
@@ -70,7 +69,7 @@
           this.movies.push(response.data);
           this.errors = false
         })
-        .catch(error => {
+        .catch((error) => {
           console.log(error.response.data.errors);
           this.errors = error.response.data.errors;
         })
