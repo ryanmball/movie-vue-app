@@ -4,10 +4,17 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/movies">Movies</router-link> |
       <router-link to="/movies/new">New Movie</router-link> |
-      <router-link to="/signup">Signup</router-link> |
-      <router-link to="/login">Login</router-link> |
-      <router-link to="/logout">Logout</router-link>
+      <router-link to="/actors">Actors</router-link> |
+      <router-link to="/actors/new">New Actor</router-link> |
+      <span v-if="userLoggedIn()">
+        <router-link to="/logout">Logout</router-link>
+      </span>
+      <span v-else>
+        <router-link to="/signup">Signup</router-link> |
+        <router-link to="/login">Login</router-link>
+      </span>
     </div>
+    <!-- <p>{{ userLoggedIn() }}</p> -->
     <router-view />
   </div>
 </template>
@@ -34,3 +41,13 @@
   color: #42b983;
 }
 </style>
+
+<script>
+export default {
+  methods: {
+    userLoggedIn: function () {
+      return localStorage.jwt;
+    },
+  },
+};
+</script>

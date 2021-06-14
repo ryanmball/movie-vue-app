@@ -1,5 +1,11 @@
 <template>
   <div class="movies-new">
+    <h3>Create a new movie:</h3>
+    <ul>
+      <li class="text-danger" v-for="error in errors" v-bind:key="error">
+        {{ error }}
+      </li>
+    </ul>
     <input
       type="text"
       v-model="newMovieParams.title"
@@ -24,6 +30,7 @@ export default {
   data: function () {
     return {
       newMovieParams: {},
+      errors: [],
     };
   },
   created: function () {},
