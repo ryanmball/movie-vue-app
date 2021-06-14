@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <h1>{{ message }}</h1>
-    <h2>Add a movie to the list:</h2>
+    <!-- <h2>Add a movie to the list:</h2>
     <input type="text" v-model="newMovieTitle" placeholder="title" /><br />
     <input type="text" v-model="newMovieYear" placeholder="year" /><br />
     <input type="text" v-model="newMoviePlot" placeholder="plot" /><br />
@@ -35,7 +35,7 @@
         <p>Year: {{ currentMovie.year }}</p>
         <button>Close</button>
       </form>
-    </dialog>
+    </dialog> -->
   </div>
 </template>
 

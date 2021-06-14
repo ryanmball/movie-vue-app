@@ -9,6 +9,9 @@
         Year created: {{ movie.year }}<br />
         Director: {{ movie.director }}<br />
       </p>
+      <router-link :to="`/movies/${movie.id}`">
+        <button>More Detail</button>
+      </router-link>
     </div>
   </div>
 </template>
