@@ -46,7 +46,7 @@
 export default {
   methods: {
     userLoggedIn: function () {
-      return localStorage.jwt;
+      return localStorage.getItem("jwt");
     },
   },
 };
