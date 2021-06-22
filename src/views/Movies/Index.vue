@@ -13,6 +13,7 @@
         {{ movie.plot }}<br />
         Year created: {{ movie.year }}<br />
         Director: {{ movie.director }}<br />
+        English: {{ movie.english }}
       </p>
       <router-link :to="`/movies/${movie.id}`">
         <button>More Detail</button>

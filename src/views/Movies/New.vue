@@ -1,37 +1,56 @@
 <template>
   <div class="movies-new">
     <h3>Create a new movie:</h3>
-    <ul>
+    <ul class="no-bullets">
       <li class="text-danger" v-for="error in errors" v-bind:key="error">
         {{ error }}
       </li>
     </ul>
-    <input
-      type="text"
-      v-model="newMovieParams.title"
-      placeholder="title"
-    /><br />
-    <input type="text" v-model="newMovieParams.plot" placeholder="plot" /><br />
-    <small
-      v-if="newMovieParams.plot.length > 0 && newMovieParams.plot.length < 101"
-      >{{ 100 - newMovieParams.plot.length }} Characters Remaining <br
-    /></small>
-    <small class="text-danger" v-if="newMovieParams.plot.length > 100"
-      >Limit Exceeded <br
-    /></small>
-    <input type="text" v-model="newMovieParams.year" placeholder="year" /><br />
-    <input
-      type="text"
-      v-model="newMovieParams.director"
-      placeholder="director"
-    /><br />
-    <input type="submit" v-on:click="movieCreate()" />
+    <button v-if="errors[0]" @click="dismissErrors()">Dismiss Errors</button>
+    <form v-on:submit.prevent>
+      <label for="title">Title: </label>
+      <input id="title" type="text" v-model="newMovieParams.title" /><br />
+      <label for="plot">Plot: </label>
+      <input id="plot" type="text" v-model="newMovieParams.plot" /><br />
+      <label for="year">Year: </label>
+      <input id="year" type="text" v-model="newMovieParams.year" /><br />
+      <label for="director">Director: </label>
+      <input
+        id="director"
+        type="text"
+        v-model="newMovieParams.director"
+      /><br />
+      <label for="english">English: </label>
+      <label for="english"><small>Yes</small></label>
+      <input
+        type="radio"
+        name="english"
+        id="english"
+        value="true"
+        v-model="newMovieParams.english"
+      />
+      <label for="english"><small>No</small></label>
+      <input
+        type="radio"
+        name="english"
+        id="english"
+        value="false"
+        v-model="newMovieParams.english"
+      />
+      <br />
+      <input type="submit" v-on:click="movieCreate()" />
+    </form>
   </div>
 </template>
 
 <style>
 .text-danger {
   color: red;
+}
+ul.no-bullets {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 </style>
 
@@ -59,6 +78,9 @@ export default {
           this.errors = error.response.data.errors;
         });
       this.newMovieParams = {};
+    },
+    dismissErrors: function () {
+      this.errors = [];
     },
   },
 };

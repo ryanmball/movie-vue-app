@@ -1,28 +1,27 @@
 <template>
   <div class="actors-new">
     <h3>Create a new actor:</h3>
-    <ul>
+    <ul class="no-bullets">
       <li class="text-danger" v-for="error in errors" v-bind:key="error">
         {{ error }}
       </li>
     </ul>
-    <input
-      type="text"
-      v-model="newActorParams.first_name"
-      placeholder="first name"
-    /><br />
-    <input
-      type="text"
-      v-model="newActorParams.last_name"
-      placeholder="last name"
-    /><br />
-    <input type="text" v-model="newActorParams.age" placeholder="age" /><br />
-    <input
-      type="text"
-      v-model="newActorParams.known_for"
-      placeholder="known for"
-    /><br />
-    <input type="submit" v-on:click="actorCreate()" />
+    <button v-if="errors[0]">Dismiss Errors</button>
+    <form>
+      <label for="first">First name: </label>
+      <input id="first" type="text" v-model="newActorParams.first_name" /><br />
+      <label for="last">Last name: </label>
+      <input id="last" type="text" v-model="newActorParams.last_name" /><br />
+      <label for="age">Age: </label>
+      <input id="age" type="text" v-model="newActorParams.age" /><br />
+      <label for="knownFor">Known for: </label>
+      <input
+        id="knownFor"
+        type="text"
+        v-model="newActorParams.known_for"
+      /><br />
+      <input type="submit" v-on:click="actorCreate()" />
+    </form>
   </div>
 </template>
 
@@ -50,6 +49,9 @@ export default {
           this.errors = error.response.data.errors;
         });
       this.newActorParams = {};
+    },
+    dismissErrors: function () {
+      this.errors = [];
     },
   },
 };
