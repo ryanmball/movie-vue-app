@@ -7,7 +7,7 @@
       </li>
     </ul>
     <button v-if="errors[0]" @click="dismissErrors()">Dismiss Errors</button>
-    <form>
+    <form v-on:submit.prevent>
       <label for="first">First name: </label>
       <input id="first" type="text" v-model="newActorParams.first_name" /><br />
       <label for="last">Last name: </label>
