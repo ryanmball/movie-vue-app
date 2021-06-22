@@ -6,7 +6,7 @@
         {{ error }}
       </li>
     </ul>
-    <button v-if="errors[0]">Dismiss Errors</button>
+    <button v-if="errors[0]" @click="dismissErrors()">Dismiss Errors</button>
     <form>
       <label for="first">First name: </label>
       <input id="first" type="text" v-model="newActorParams.first_name" /><br />
