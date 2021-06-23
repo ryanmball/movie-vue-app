@@ -39,9 +39,16 @@
           v-model="editMovieParams.director"
         />
       </div>
+      <div class="form-group">
+        <label>Image Url:</label>
+        <input
+          type="text"
+          class="form-control"
+          v-model="editMovieParams.image_url"
+        />
+      </div>
       <input type="submit" class="btn btn-primary" value="Submit" />
     </form>
-    <p>{{ editMovieParams }}</p>
   </div>
 </template>
 

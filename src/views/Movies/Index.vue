@@ -1,23 +1,39 @@
 <template>
   <div class="movies-index">
+    <br />
     <h1>{{ message }}</h1>
-    <!-- <p>{{ movies }}</p> -->
     Search by Title: <input type="text" v-model="filter" /> <br />
     Search by Director: <input type="text" v-model="filter" />
-    <div
-      v-for="movie in filterBy(movies, filter, 'title', 'director')"
-      v-bind:key="movie.id"
-    >
-      <h3>{{ movie.title }}</h3>
-      <p>
-        {{ movie.plot }}<br />
-        Year created: {{ movie.year }}<br />
-        Director: {{ movie.director }}<br />
-        English: {{ movie.english }}
-      </p>
-      <router-link :to="`/movies/${movie.id}`">
-        <button>More Detail</button>
-      </router-link>
+    <div class="container">
+      <br />
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div
+          class="col"
+          v-for="movie in filterBy(movies, filter, 'title', 'director')"
+          v-bind:key="movie.id"
+        >
+          <div class="card">
+            <img
+              :src="movie.image_url"
+              class="card-img-top"
+              :alt="movie.title"
+            />
+            <div class="card-body">
+              <h5 class="card-title">{{ movie.title }}</h5>
+              <p class="card-text">
+                {{ movie.plot }} <br />
+                Year: {{ movie.year }} <br />
+                Director: {{ movie.director }}
+              </p>
+              <router-link :to="`/movies/${movie.id}`">
+                <button type="button" class="btn btn-outline-primary btn-sm">
+                  More Detail
+                </button>
+              </router-link>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
