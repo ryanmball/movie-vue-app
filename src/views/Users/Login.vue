@@ -1,6 +1,8 @@
 <template>
   <div class="login">
     <form v-on:submit.prevent="submit()">
+      <br />
+      <br />
       <h1>Login</h1>
       <ul>
         <li v-for="error in errors" v-bind:key="error">{{ error }}</li>
@@ -41,7 +43,7 @@ export default {
           axios.defaults.headers.common["Authorization"] =
             "Bearer " + response.data.jwt;
           localStorage.setItem("jwt", response.data.jwt);
-          this.$router.push("/");
+          this.$router.push("/movies");
         })
         .catch((error) => {
           console.log(error.response);

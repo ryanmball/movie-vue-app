@@ -21,7 +21,9 @@
         v-model="newMovieParams.director"
       /><br />
       <label for="english">English: </label>
+      &nbsp;
       <label for="english"><small>Yes</small></label>
+      &nbsp;
       <input
         type="radio"
         name="english"
@@ -29,7 +31,9 @@
         value="true"
         v-model="newMovieParams.english"
       />
+      &nbsp;&nbsp;
       <label for="english"><small>No</small></label>
+      &nbsp;
       <input
         type="radio"
         name="english"
